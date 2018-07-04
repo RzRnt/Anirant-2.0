@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/RzRnt/Anirant-2.0/issues"
   },
-  "homepage": "https://github.com/RzRnt/Anirant-2.0#readme"
+  "homepage": "https://github.com/RzRnt/Anirant-2.0#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "lowdb": "^1.0.0",
+    "rss-parser": "^3.4.2",
+    "transmission": "^0.4.9",
+    "webtorrent": "^0.100.0",
+    "winston": "^3.0.0"
+  }
 }
