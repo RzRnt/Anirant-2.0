@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Anirant 2.0</title>
+  <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-collapse">
+<div class="wrapper">
+
+  <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+      </li>
+  </nav>
+
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="./starter.html" class="brand-link">
+      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">Anirant 2.0</span>
+    </a>
+
+    <div class="sidebar">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Mashumaro</a>
+        </div>
+      </div>
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-plus"></i>
+                <p>
+                &nbsp; Add Anime &emsp;
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <form action="/create" method="POST" class="sidebar-form">
+                  <span>-</span>
+                  <li class="nav-item">
+                      <input type="text" name="subber" class="form-control" placeholder="Subber" required>
+                  </li>
+                  <span>-</span>
+                  <li class="nav-item">
+                      <input type="text" name="title" class="form-control" placeholder="Title" required>
+                  </li>
+                  <span>-</span>
+                  <li class="nav-item">
+                      <input type="text" name="resolution" class="form-control" placeholder="Resolution" required>
+                  </li>
+                  <br>
+                  <button type="submit" class="btn">Submit</button>
+                </form>
+              </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+  <div class="content-wrapper">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-3">
+            <h1 class="m-0 text-dark text-center">Anime List</h1>
+            <hr>
+            {{#each anime_details}}
+              <div class="card">
+                <div class="card-header">
+                    <form action="/delete" method="POST" class="sidebar-form">
+                    <input type="hidden" name="subber" value={{ this.subber }}>
+                    <input type="hidden" name="title" value={{ this.title }}>
+                    <input type="hidden" name="resolution" value={{ this.resolution }}>
+                    <button type="submit" class="btn close" aria-label="Left">
+                        <i class="nav-icon fa fa-close"></i>
+                    </button>
+                    <h5 class="card-title">{{ this.title }}</h5>
+                    <p class="card-text">
+                        Subber: {{ this.subber }} - Resolution: {{ this.resolution }}
+                    </p>
+                    </form>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
+</body>
+</html>

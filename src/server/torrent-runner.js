@@ -11,6 +11,7 @@ class TorrentRunner {
 
     runTorrentBox(){
         Promise.resolve().then(() => {
+            console.log("Torrent Runner is Running")
             return this.anime_parser.parseAnimeFeed();
         }).then(anime_feeds => {
             return this.anime_parser.getAnimeOnList(anime_feeds);
@@ -19,8 +20,8 @@ class TorrentRunner {
         }).then(anime_not_downloaded => {
             return this.torrenter.addAnimeToTorrent(anime_not_downloaded)
         }).catch( err => {
-            console.log("Torrent Box Failed to Run: ", err);
-        });
+            console.log("Torrent Runner Failed to Run: ", err);
+        })
     }
 }
 

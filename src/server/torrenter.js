@@ -18,9 +18,6 @@ class Torrenter {
                     if (error) {
                         console.log(error)
                     }
-                    let id = result.id;
-                    console.log('Just added a new torrent.');
-                    console.log('Torrent ID: ' + id);
                 })
             });
             resolve(anime_not_downloaded)
@@ -36,7 +33,6 @@ class Torrenter {
                     promises.push(transmission.get((err, result) => {
                         result.torrents.forEach( (torrent) => {
                            if(torrent.name === anime.title) {
-                                console.log("terbaik")
                                 anime_not_downloaded.splice(index, 1)
                                 return;
                            }
