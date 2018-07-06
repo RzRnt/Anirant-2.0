@@ -24,5 +24,13 @@ class AnimeInput {
     getAllAnimeOnList() {
         return anime_db.get('anime_details').value()
     }
+
+    findAnimeOnList(anime_details) {
+        return anime_db.get('anime_details').find({
+            title: anime_details.title,
+            subber: anime_details.subber,
+            resolution: anime_details.resolution
+        }).value()
+    }
 }
 module.exports = AnimeInput

@@ -1,14 +1,15 @@
 const fs = require('fs');
 const Parser = require('rss-parser');
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync('./storage/anime_db.json')
+const animeInput = require('./anime-input')
 const parser = new Parser();
-const anime_db = low(adapter)
 const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
 
 class AnimeParser {
+
+    constructor() {
+        this.anime_input = new animeInput();
+    } 
     parseAnimeFeed() {
         return new Promise((resolve, reject) => {
             try {
@@ -31,11 +32,8 @@ class AnimeParser {
                 let on_list_anime = []
                 feeds.forEach( feed => {
                     let anime_details = this.animeTitleParser(feed.title)
-                    if (anime_db.get('anime_details').find({
-                        title: anime_details.title,
-                        subber: anime_details.subber,
-                        resolution: anime_details.resolution
-                    }).value() !== undefined) {
+                    let findAnime = this.anime_input.findAnimeOnList(anime_details)
+                    if ( findAnime !== undefined) {
                         on_list_anime.push(feed)
                     }
                 });
@@ -68,7 +66,7 @@ class AnimeParser {
               type: AnimeType,
               format: AnimeFormat
             };
-        
+
             return anime;
         
           } catch(e){
