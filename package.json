@@ -22,9 +22,7 @@
     "express-handlebars": "^3.0.0",
     "lowdb": "^1.0.0",
     "rss-parser": "^3.4.2",
-    "sqlite3": "^4.0.1",
     "transmission": "^0.4.9",
-    "webtorrent": "^0.100.0",
     "winston": "^3.0.0"
   }
 }

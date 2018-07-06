@@ -3,7 +3,6 @@ const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('./storage/anime_db.json');
 const anime_db = low(adapter);
 
-
 class AnimeInput {
 
     insertAnimeToList(anime_details) {

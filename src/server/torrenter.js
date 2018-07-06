@@ -28,7 +28,6 @@ class Torrenter {
         return new Promise ( (resolve, reject) => {
             try {
                 let anime_not_downloaded = anime_on_list
-                let promises = []
                 anime_on_list.forEach( (anime, index) => {
                     promises.push(transmission.get((err, result) => {
                         result.torrents.forEach( (torrent) => {
@@ -38,9 +37,6 @@ class Torrenter {
                            }
                         })
                     }));
-                })
-                Promise.all(promises).then(()=>{
-                    console.log(anime_not_downloaded)
                 })
                 if (anime_not_downloaded.length > 0) {
                     resolve(anime_not_downloaded)

@@ -3,7 +3,7 @@ const torrent_box = new torrentBox()
 const express = require("express");
 const app = express();
 const path = require('path');
-const port = 7650;
+const port = 2350;
 const route = require("./src/server/app");
 const bodyParser = require('body-parser')
 const exphbs  = require('express-handlebars');
@@ -23,7 +23,7 @@ app.listen(port, () => {
     console.log(`Torrent Box Is Running on Port ${port}`)
 });
 
-var minutes = 1;
+var minutes = 0.25;
 var the_interval = minutes * 60 * 1000;
 setInterval(() => {
     torrent_box.runTorrentBox()
